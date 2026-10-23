@@ -7,6 +7,22 @@
 
 当前为持续开发版本，GBA 版玩法不一定与原版一致。本仓库可独立编译，不需要原版游戏文件。
 
+## 游戏截图
+
+240×160 原始分辨率游戏画面。
+
+| 标题画面 | 君主选择 |
+|---|---|
+| ![标题画面](docs/screenshots/title.png) | ![君主选择](docs/screenshots/ruler-selection.png) |
+
+| 大地图 | 局部地图 |
+|---|---|
+| ![大地图](docs/screenshots/world-map.png) | ![局部地图](docs/screenshots/city-map.png) |
+
+| 城池管理 | 战场交战 |
+|---|---|
+| ![城池管理](docs/screenshots/city.png) | ![战场交战](docs/screenshots/battle.png) |
+
 ## 编译 ROM
 
 Linux x86_64 / WSL，需要 Python 3、make、g++、xz-utils。安装固定版本工具链：

@@ -1,0 +1,10 @@
+[
+  {
+    "path": "butano/hw/src/bn_hw_sram.bn_noflto.cpp",
+    "description": "Use 128 KiB FLASH cartridge save detection instead of SRAM.",
+    "source_sha256": "ca248700e78aecad9714a40198af0d3868eb14527c8c9ec6998ae935ae74cfc2",
+    "result_sha256": "ea63d1fd1a2d6553a36f6fd17b30090d283458e833be427bae261125d81af7f4",
+    "old": "    alignas(int) const char save_string[] = \"SRAM_V113\";",
+    "new": "    // This cartridge uses two 64 KiB flash banks for eight user save slots.\n    alignas(int) const char save_string[] = \"FLASH1M_V103\";"
+  }
+]

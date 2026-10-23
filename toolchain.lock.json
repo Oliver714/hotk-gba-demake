@@ -1,0 +1,127 @@
+{
+  "format": 1,
+  "platform": "linux-x86_64",
+  "prefix": "/opt/wonderful",
+  "packages": [
+    {
+      "filename": "runtime-gcc-libs-0.3.24-1-x86_64.pkg.tar.xz",
+      "sha256": "7ee8870d34b637c4ab8e4849cd040ce08337d2fa0504919c8abf87a5acf8379d",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/runtime-gcc-libs-0.3.24-1-x86_64.pkg.tar.xz"
+    },
+    {
+      "filename": "runtime-musl-1.2.6-1-x86_64.pkg.tar.xz",
+      "sha256": "d2bac2eac3958112896f72b04b22e609e5e816c3b788a2c3f73049d3c707cf68",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/runtime-musl-1.2.6-1-x86_64.pkg.tar.xz"
+    },
+    {
+      "filename": "runtime-zlib-1.3.2-1-x86_64.pkg.tar.xz",
+      "sha256": "40abdd299da2249cb356c8a7bf15ffdb8fdda95e4a67aa8e0f5f982a381d6282",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/runtime-zlib-1.3.2-1-x86_64.pkg.tar.xz"
+    },
+    {
+      "filename": "runtime-zstd-1.5.7-1-x86_64.pkg.tar.xz",
+      "sha256": "ef93cdacf6c921375786f81286b55682c7468b3eb9c86c860576fb2d727afa7c",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/runtime-zstd-1.5.7-1-x86_64.pkg.tar.xz"
+    },
+    {
+      "filename": "target-gba-0.1.0-4-any.pkg.tar.xz",
+      "sha256": "d22ae0aaaed24c5590c808666c5ad63fc97031f2e1afe2a5d7013f45ba1661c3",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/target-gba-0.1.0-4-any.pkg.tar.xz"
+    },
+    {
+      "filename": "target-gba-syslibs-0.1.0.r43.3b34027-1-any.pkg.tar.xz",
+      "sha256": "cc5c88d6e5a1c515e5fd2aea286026e3444f19f6794e1f206862d1c9e4577b2c",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/target-gba-syslibs-0.1.0.r43.3b34027-1-any.pkg.tar.xz"
+    },
+    {
+      "filename": "toolchain-gcc-arm-none-eabi-binutils-2.47-1-x86_64.pkg.tar.xz",
+      "sha256": "f62bfeb8b08ee999e511b44aa57cb3bfa5fff2bd6c7da3b758df00540888163e",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/toolchain-gcc-arm-none-eabi-binutils-2.47-1-x86_64.pkg.tar.xz"
+    },
+    {
+      "filename": "toolchain-gcc-arm-none-eabi-gcc-1:16.2.0.r229124.be93d9d35bf-1-x86_64.pkg.tar.xz",
+      "sha256": "e3037dd1b0bee5c3433bda48de73fcdb94e87fbf86ec442c52376c96ac4c0bfa",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/toolchain-gcc-arm-none-eabi-gcc-1%3A16.2.0.r229124.be93d9d35bf-1-x86_64.pkg.tar.xz"
+    },
+    {
+      "filename": "toolchain-gcc-arm-none-eabi-gcc-libs-1:16.2.0.r229124.be93d9d35bf-1-x86_64.pkg.tar.xz",
+      "sha256": "1fcf1df9af21ef82161716f77419c86dce6ca0e1992efad26686e6708cff7a12",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/toolchain-gcc-arm-none-eabi-gcc-libs-1%3A16.2.0.r229124.be93d9d35bf-1-x86_64.pkg.tar.xz"
+    },
+    {
+      "filename": "toolchain-gcc-arm-none-eabi-libstdcxx-picolibc-16.2.0.r229124.be93d9d35bf-1-any.pkg.tar.xz",
+      "sha256": "fc9a01673f955b3ea8feadb030972a911e582cd9277d1fa433a20a31fad2fb7b",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/toolchain-gcc-arm-none-eabi-libstdcxx-picolibc-16.2.0.r229124.be93d9d35bf-1-any.pkg.tar.xz"
+    },
+    {
+      "filename": "toolchain-gcc-arm-none-eabi-picolibc-generic-1.8.13.r26367.770d86889-1-any.pkg.tar.xz",
+      "sha256": "6182b3db3750644bb0acf76ebc4e6c71e32d46ac57859857d21e9efe39662c0d",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/toolchain-gcc-arm-none-eabi-picolibc-generic-1.8.13.r26367.770d86889-1-any.pkg.tar.xz"
+    },
+    {
+      "filename": "wf-agbpack-0.3.2.r21.86c45d7-1-x86_64.pkg.tar.xz",
+      "sha256": "16f7536917f7dc62adce4c86a2489725a8f9792f693e297f7bf8feff91fcdf6a",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/wf-agbpack-0.3.2.r21.86c45d7-1-x86_64.pkg.tar.xz"
+    },
+    {
+      "filename": "wf-lua-5.4.9-1-x86_64.pkg.tar.xz",
+      "sha256": "ef19d6fdaa5153b9fff7670b9972945644d0a2e36b01f051eb97f70233e0b67f",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/wf-lua-5.4.9-1-x86_64.pkg.tar.xz"
+    },
+    {
+      "filename": "wf-lua-filesystem-1.8.0.r352.912e067-1-x86_64.pkg.tar.xz",
+      "sha256": "7417694f842834299e1aff31b30db44cdd9442664efb88bc5fbb6c1ed12c30d2",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/wf-lua-filesystem-1.8.0.r352.912e067-1-x86_64.pkg.tar.xz"
+    },
+    {
+      "filename": "wf-lua-iconv-7.1.r101.5452834-1-x86_64.pkg.tar.xz",
+      "sha256": "00ac764e6d9f90bce5301e3d2c5a18e3b622fa767ede5fe63da297d26d304cc4",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/wf-lua-iconv-7.1.r101.5452834-1-x86_64.pkg.tar.xz"
+    },
+    {
+      "filename": "wf-lua-libdeflate-0.0.1.r1.a41cabd-1-x86_64.pkg.tar.xz",
+      "sha256": "0c4d1fad6da54c1e51e9d605125e861657f7cf3500c8d2d287f6f2fc318e042e",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/wf-lua-libdeflate-0.0.1.r1.a41cabd-1-x86_64.pkg.tar.xz"
+    },
+    {
+      "filename": "wf-lua-penlight-1.15.0.r950.c317508-1-any.pkg.tar.xz",
+      "sha256": "5f0f04e5d9b9ddad0a3564d246c0ff8c24d7a7dcf5d70f5f0c86ee2289e2ed92",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/wf-lua-penlight-1.15.0.r950.c317508-1-any.pkg.tar.xz"
+    },
+    {
+      "filename": "wf-lua-plum-0.0.1.r9.6a60edc-1-x86_64.pkg.tar.xz",
+      "sha256": "49bcfd88642242475c1e65736a22d01c23cad43565270a05c8c4a370eaf58024",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/wf-lua-plum-0.0.1.r9.6a60edc-1-x86_64.pkg.tar.xz"
+    },
+    {
+      "filename": "wf-lua-posix-36.3-1-x86_64.pkg.tar.xz",
+      "sha256": "75e4e632fb7e69bc929e1a09dd20f05306b4d06d947539c2884dde493c25c07e",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/wf-lua-posix-36.3-1-x86_64.pkg.tar.xz"
+    },
+    {
+      "filename": "wf-lua-toml-0.4.1.r49.f9ee400-1-x86_64.pkg.tar.xz",
+      "sha256": "c00e393f944eb060f403c66310ca7c2e638a8485d0761ae205ac275af570bd28",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/wf-lua-toml-0.4.1.r49.f9ee400-1-x86_64.pkg.tar.xz"
+    },
+    {
+      "filename": "wf-tools-0.2.0-3-x86_64.pkg.tar.xz",
+      "sha256": "675b63d0040a0b3769a1111b9519db919ac0136067d0ce73ecca1314939fc93f",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/wf-tools-0.2.0-3-x86_64.pkg.tar.xz"
+    },
+    {
+      "filename": "wf-tools-lua-0.1.0.r183.ad72e38-1-any.pkg.tar.xz",
+      "sha256": "600205d76ce0a0eefbb4df923b5a3b3e56e39346942d597e9e0e62035362de6c",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/wf-tools-lua-0.1.0.r183.ad72e38-1-any.pkg.tar.xz"
+    },
+    {
+      "filename": "wf-tools-native-0.1.0.r180.3bf0d29-1-x86_64.pkg.tar.xz",
+      "sha256": "719d59d9c757bc96abd27877a941803b9032e2e81195960a1fae2cced22f498e",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/wf-tools-native-0.1.0.r180.3bf0d29-1-x86_64.pkg.tar.xz"
+    },
+    {
+      "filename": "target-gba-nonfree-0.1.0-2-any.pkg.tar.xz",
+      "sha256": "346f9a79af854d3e2484022469dbf46ea32e671ddb1cd4658d010395f6461f97",
+      "url": "https://wonderful.asie.pl/packages/rolling/linux/x86_64/target-gba-nonfree-0.1.0-2-any.pkg.tar.xz"
+    }
+  ]
+}

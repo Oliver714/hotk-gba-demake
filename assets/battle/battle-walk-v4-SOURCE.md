@@ -1,0 +1,5 @@
+﻿- Asset: `battle-walk-v4.png`
+- Generator: built-in image generation tool.
+- References: `battle-walk-v3.png` for the five-row/four-frame sheet and infantry, and `cavalry_sprites-v16-0-0.png` for the in-game upright cavalry silhouette.
+- Purpose: preserve the rider's upright seated posture across the gallop cycle and keep the rider and horse silhouettes separated at GBA sprite scale.
+- Prompt summary: transparent sprite sheet; four consecutive right-facing gallop phases for the same rider and horse; stable head height and hoof baseline; animate horse legs, tail and cape; retain four infantry classes; avoid a prone, jockey-crouched, or nearly horizontal rider.

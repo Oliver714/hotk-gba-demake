@@ -1,0 +1,93 @@
+{
+  "_comment": "GBA authentic color scheme - based on actual GBA games' visual style",
+  "_design_philosophy": "Bright mid-tones, high contrast borders, saturated accents, minimal gradients",
+
+  "background": {
+    "primary": "#c8b090",
+    "secondary": "#a89070",
+    "light": "#e8d8b8",
+    "dark": "#988060"
+  },
+
+  "border": {
+    "dark": "#403020",
+    "light": "#f8f0d8",
+    "mid": "#706050",
+    "outer": "#201008"
+  },
+
+  "text": {
+    "primary": "#584838",
+    "secondary": "#685848",
+    "highlight": "#d82810",
+    "muted": "#786858"
+  },
+
+  "selection": {
+    "active": "#e84020",
+    "background": "#f8d098",
+    "border": "#c03010"
+  },
+
+  "accent": {
+    "gold": "#f8c840",
+    "gold_dark": "#c89820",
+    "blue": "#3080c8",
+    "green": "#40a870",
+    "jade": "#508868",
+    "indigo": "#4860a8",
+    "ochre": "#d89830"
+  },
+
+  "window": {
+    "fill": "#d0b898",
+    "border_out": "#201008",
+    "border_in": "#f8f8e8",
+    "shadow": "#685848"
+  },
+
+  "special": {
+    "disabled": "#908880",
+    "warning": "#f84020",
+    "seal": "#c02818"
+  },
+
+  "_gba_rgb15_mapping": {
+    "_note": "GBA uses 5-bit per channel (0-31), colors optimized for this",
+    "background_primary": "25,22,18",
+    "background_secondary": "21,18,14",
+    "background_light": "29,27,23",
+    "background_dark": "19,16,12",
+
+    "border_dark": "8,6,4",
+    "border_light": "31,30,27",
+    "border_mid": "14,12,10",
+    "border_outer": "4,2,1",
+
+    "text_primary": "11,9,7",
+    "text_secondary": "13,11,9",
+    "text_highlight": "27,5,2",
+    "text_muted": "15,13,11",
+
+    "selection_active": "29,8,4",
+    "selection_background": "31,26,19",
+    "selection_border": "24,6,2",
+
+    "accent_gold": "31,25,8",
+    "accent_gold_dark": "25,19,4",
+    "accent_blue": "6,16,25",
+    "accent_green": "8,21,14",
+    "accent_jade": "10,17,13",
+    "accent_indigo": "9,12,21",
+    "accent_ochre": "27,19,6",
+
+    "window_fill": "26,23,19",
+    "window_border_out": "4,2,1",
+    "window_border_in": "31,31,29",
+    "window_shadow": "13,11,9",
+
+    "disabled": "18,17,16",
+    "warning": "31,8,4",
+    "seal": "24,5,3"
+  }
+}

@@ -1,0 +1,28 @@
+TARGET := sango_gba
+BUILD := build
+LIBBUTANO := vendor/butano/butano
+PYTHON := python3
+SOURCES := src generated
+INCLUDES := include generated
+DATA :=
+GRAPHICS :=
+AUDIO :=
+AUDIOBACKEND := null
+DMGAUDIO :=
+DMGAUDIOBACKEND := null
+ROMTITLE := SANGO DEMAKE
+ROMCODE := SGQ1
+USERFLAGS := -DBN_CFG_ASSERT_ENABLED=true -flto
+USERCXXFLAGS :=
+USERASFLAGS :=
+USERLDFLAGS := -flto=8
+USERLIBDIRS :=
+USERLIBS :=
+DEFAULTLIBS :=
+STACKTRACE :=
+USERBUILD :=
+EXTTOOL :=
+ifndef LIBBUTANOABS
+export LIBBUTANOABS := $(realpath $(LIBBUTANO))
+endif
+include $(LIBBUTANOABS)/butano.mak

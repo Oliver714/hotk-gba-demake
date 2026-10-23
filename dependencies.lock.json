@@ -1,0 +1,9 @@
+{
+  "format": 1,
+  "butano": {
+    "repository": "https://github.com/GValiente/butano",
+    "revision": "88588a5f74ed0ce8e9a190a3567e3c1322945480",
+    "url": "https://codeload.github.com/GValiente/butano/tar.gz/88588a5f74ed0ce8e9a190a3567e3c1322945480",
+    "sha256": "1830d6deef646c0c91d136bb4f3b09e9c7ad99d477d258cdde305d178d2a2eec"
+  }
+}

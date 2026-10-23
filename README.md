@@ -1,4 +1,4 @@
-# 三国群英传1 GBA Demake
+# 三国群英传 GBA Demake
 
 [![Build and release](https://github.com/Oliver714/hotk-gba-demake/actions/workflows/build.yml/badge.svg)](https://github.com/Oliver714/hotk-gba-demake/actions/workflows/build.yml)
 [下载 ROM](https://github.com/Oliver714/hotk-gba-demake/releases)

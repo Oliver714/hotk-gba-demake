@@ -1,7 +1,7 @@
 # Build with --platform linux/amd64: the locked tools are x86_64.
 FROM ubuntu:22.04@sha256:98510ac07bb4545e389be502a8918b385c018bfe4ceeb5ac7e0375c782268b04 AS toolchain
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ca-certificates make g++ python3 xz-utils \
+    ca-certificates make g++ python3 xz-utils p7zip-full \
     && apt-get clean
 WORKDIR /project
 COPY toolchain.lock.json ./
@@ -24,3 +24,9 @@ RUN case "$RUN_TESTS" in 0) ;; 1) bash tools/test.sh ;; *) exit 2 ;; esac \
 
 FROM scratch AS artifacts
 COPY --from=build /project/dist/ /
+
+FROM build AS web-build
+RUN python3 tools/package_release.py
+
+FROM scratch AS web-artifacts
+COPY --from=web-build /project/release/ /

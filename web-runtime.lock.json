@@ -1,0 +1,7 @@
+{
+  "version": "4.2.3",
+  "url": "https://github.com/EmulatorJS/EmulatorJS/releases/download/v4.2.3/4.2.3.7z",
+  "sha256": "07d451bc06fa3ad04ab30d9b94eb63ac34ad0babee52d60357b002bde8f3850b",
+  "source": "https://github.com/EmulatorJS/EmulatorJS/tree/v4.2.3",
+  "core": "mgba"
+}

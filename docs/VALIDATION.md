@@ -11,6 +11,8 @@
 
 本记录是整理时的快照，不代表之后所有提交的验证结果。
 
+2026-10-24 网页版验证：Windows 和 Linux 容器均可打包约 5 MiB 的 itch.io HTML ZIP；包内 ROM 哈希不变。真实浏览器在无跨域隔离的沙盒 iframe 中验证启动、键盘导航、128 KiB 存档、刷新恢复和触屏布局，通过时无外部资源请求及运行错误。Actions 已加入同类 Chromium 检查，远端结果以对应提交的运行记录为准。
+
 Butano 自动下载验证：移走原有 vendor 后，按 dependencies.lock.json 的固定归档及 SHA256 重新安装，存档标记补丁的前后校验通过；重复调用复用已有依赖。Linux 和不携带宿主机 vendor 的 Docker 构建均成功，ROM SHA256 不变；Release ZIP 内下载所得的 Butano 许可证已检查。
 
 Docker 验证：固定 Ubuntu 22.04 amd64 基础镜像，从联网下载工具链到编译、校验和本地导出完整执行成功，ROM SHA256 与上文一致。Dockerfile 通过 Buildx 配置检查；tools/build_docker.sh 的自定义输出目录已实际验证。此项验证使用默认构建模式，未在容器内重复运行此前已通过的 62 项主机测试。

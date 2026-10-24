@@ -1,4 +1,4 @@
-name: Build and release GBA ROM
+name: Build and release GBA ROM and web player
 on:
   push:
     branches: [main, master]
@@ -19,7 +19,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Install host dependencies
-        run: sudo apt-get update && sudo apt-get install -y make g++ python3 xz-utils
+        run: sudo apt-get update && sudo apt-get install -y make g++ python3 xz-utils p7zip-full
       - name: Install locked Wonderful Toolchain
         run: |
           sudo mkdir -p /opt/wonderful
@@ -31,6 +31,19 @@ jobs:
         run: bash build.sh
       - name: Package release files
         run: python3 tools/package_release.py
+      - name: Install browser test tools
+        run: |
+          npm install --prefix "$RUNNER_TEMP/hotk-web-test" playwright@1.64.1 --ignore-scripts --no-audit --no-fund
+          node "$RUNNER_TEMP/hotk-web-test/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Test browser player in sandbox iframe
+        run: NODE_PATH="$RUNNER_TEMP/hotk-web-test/node_modules" node tests/web_smoke.cjs
+      - name: Upload browser failure screenshots
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: web-test-failure-${{ github.sha }}
+          path: .cache/web-smoke/results/
+          if-no-files-found: ignore
       - name: Upload build artifacts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:

@@ -7,6 +7,10 @@
 *.inc text eol=lf
 *.mak text eol=lf
 *.yml text eol=lf
+*.js text eol=lf
+*.cjs text eol=lf
+*.html text eol=lf
+*.css text eol=lf
 *.png binary
 *.ttf binary
 *.otf binary

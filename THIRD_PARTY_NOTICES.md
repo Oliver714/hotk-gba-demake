@@ -5,6 +5,7 @@ The project's original code is licensed under GPL-3.0-only. This does not relice
 | Component | License / source |
 |---|---|
 | Butano | zlib; fetched from https://github.com/GValiente/butano at the revision in dependencies.lock.json. Downloaded license: vendor/butano/LICENSE |
+| Browser runtime | EmulatorJS 4.2.3 (GPL-3.0), with its mGBA/RetroArch core; upstream sources and hashes in web-runtime.lock.json. mGBA is MPL-2.0; the core archives carry their own license.txt and core.json. See docs/WEB.md for the checked frontend patches and source links |
 | Bundled Butano components | Fetched with Butano. Individual notices in vendor/butano/licenses and source headers; preserve these files |
 | ZLabs Pixel 12px M CN | SIL OFL 1.1; assets/fonts/ZLabsPixel-OFL.txt and ZLabsPixel-SOURCE.md |
 | Source Han Mono SC Regular | SIL OFL 1.1; assets/fonts/SourceHanMono-LICENSE.md and SourceHanMono-SOURCE.md |

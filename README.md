@@ -3,6 +3,8 @@
 [![Build and release](https://github.com/Oliver714/hotk-gba-demake/actions/workflows/build.yml/badge.svg)](https://github.com/Oliver714/hotk-gba-demake/actions/workflows/build.yml)
 [下载 ROM](https://github.com/Oliver714/hotk-gba-demake/releases)
 
+Release 同时提供 `hotk-gba-demake-web.zip` 网页包，可上传 itch.io 作为 Play in browser 游戏。[网页打包与 itch.io 设置](docs/WEB.md)
+
 基于《三国群英传1》原版制作的 Game Boy Advance demake。包含内政、地图行军、部队指令、战场交战、武将技、装备及存档系统。目标画面为 240×160；使用 Butano 和自定义渲染、音乐解码实现。
 
 当前为持续开发版本，GBA 版玩法不一定与原版一致。本仓库可独立编译，不需要原版游戏文件。

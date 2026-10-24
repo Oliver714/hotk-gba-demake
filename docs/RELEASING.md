@@ -3,7 +3,7 @@
 工作流：.github/workflows/build.yml。
 
 1. 普通 main/master 推送、PR 和手动触发：安装固定工具链、运行主机回归测试、构建时自动下载固定 Butano、编译并检查 ROM，上传 Actions 构建附件。
-2. 推送 v* 标签：先完成同样的构建，再由独立发布任务创建或更新对应 Release，上传 ROM、ZIP 和 SHA256SUMS.txt。
+2. 推送 v* 标签：先完成同样的构建和浏览器检查，再由独立发布任务创建或更新对应 Release，上传 ROM、ROM ZIP、可用于 itch.io 的网页 ZIP 和 SHA256SUMS.txt。
 3. 仅发布任务拥有 contents: write；构建任务只读。使用 GITHUB_TOKEN，不需要个人访问令牌。Actions 引用固定提交 SHA。
 
 示例：

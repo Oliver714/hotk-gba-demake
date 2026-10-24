@@ -27,6 +27,8 @@ bash build.sh
 bash tools/test.sh
 ```
 
+网页包还需要 p7zip-full。运行 `python3 tools/package_release.py` 同时打包 ROM 和网页版本，详见 [网页版说明](WEB.md)。
+
 ## Butano 首次下载与缓存
 
 仓库不再携带 Butano 库。运行 `bash build.sh` 时会自动执行 tools/bootstrap_deps.py，从 dependencies.lock.json 指定的固定提交下载归档，验证 SHA256，只展开编译依赖及许可说明，然后应用经校验的 FLASH 存档标记补丁。

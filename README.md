@@ -3,8 +3,6 @@
 [![Build and release](https://github.com/Oliver714/hotk-gba-demake/actions/workflows/build.yml/badge.svg)](https://github.com/Oliver714/hotk-gba-demake/actions/workflows/build.yml)
 [下载 ROM](https://github.com/Oliver714/hotk-gba-demake/releases)
 
-Release 同时提供 `hotk-gba-demake-web.zip` 网页包，支持直接在浏览器中游玩。[网页打包与部署说明](docs/WEB.md)
-
 基于《三国群英传1》原版制作的 Game Boy Advance demake。包含内政、地图行军、部队指令、战场交战、武将技、装备及存档系统。目标画面为 240×160；使用 Butano 和自定义渲染、音乐解码实现。
 
 当前为持续开发版本，GBA 版玩法不一定与原版一致。本仓库可独立编译，不需要原版游戏文件。
@@ -55,6 +53,8 @@ Linux / WSL 可使用 `bash tools/build_docker.sh`；添加 `--test` 同时运�
 游戏使用 128 KiB FLASH 存档，提供 8 个槽位。请通过游戏内存档功能保存；模拟器即时存档是另外一套机制。更新 ROM 前备份个人 `.sav`，不要将其提交到仓库。
 
 ## 开发与测试
+
+Release 同时提供 `hotk-gba-demake-web.zip` 网页包，支持直接在浏览器中游玩。[网页打包与部署说明](docs/WEB.md)
 
 ```bash
 bash tools/test.sh

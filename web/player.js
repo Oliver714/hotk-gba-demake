@@ -1,5 +1,5 @@
 /* Public EmulatorJS configuration; keep game identity stable across releases. */
-// The itch.io host may disallow wake locks inside the iframe. Treat that
+// An embedding page may disallow wake locks inside the iframe. Treat that
 // optional capability as unavailable instead of asking for a forbidden lock.
 const policy = document.permissionsPolicy || document.featurePolicy;
 if (policy && !policy.allowsFeature('screen-wake-lock')) {

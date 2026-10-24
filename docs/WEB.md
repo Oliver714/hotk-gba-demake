@@ -1,4 +1,4 @@
-# 网页版与 itch.io
+# 网页版打包与部署
 
 网页版使用 EmulatorJS 的 mGBA WebAssembly 核心运行同一个 GBA ROM，并非另写一套游戏逻辑。ROM 下载版继续发布。
 
@@ -14,7 +14,7 @@ python3 tools/package_release.py
 
 - release/sango_gba.gba：原始 ROM。
 - release/sango-gba.zip：ROM、构建报告及许可说明。
-- release/hotk-gba-demake-web.zip：上传 itch.io 的网页包。
+- release/hotk-gba-demake-web.zip：可独立托管的网页包。
 - release/SHA256SUMS.txt：以上三个附件的校验值。
 
 也可只打网页包：`python3 tools/build_web.py`。第一次下载固定的 EmulatorJS 4.2.3 发布归档（约 290 MiB），依照 web-runtime.lock.json 校验 SHA256 后缓存到 .cache/web/；最终只保留网页资源和 mGBA 单线程核心，网页 ZIP 约 5 MiB。
@@ -41,15 +41,15 @@ docker buildx build --platform linux/amd64 --target web-artifacts --output type=
 
 该目标会构建 ROM 并导出全部发布附件，包括网页 ZIP。原来的 artifacts 目标和 tools/build_docker.sh 仍用于仅导出 ROM。
 
-## itch.io 设置
+## 网页部署
 
-1. Kind of project 选择 HTML / HTML Game。
-2. 上传 hotk-gba-demake-web.zip，勾选 This file will be played in the browser。
-3. 另行上传 sango-gba.zip 供需要 ROM 的玩家下载，不要把它标记为浏览器运行文件。
-4. 页面嵌入可先设 800×680，并启用全屏；也可选 Click to launch in fullscreen。
-5. 不需要启用 SharedArrayBuffer 支持。先用 Draft 检查声音、键位和存档后再公开。
+1. 将 hotk-gba-demake-web.zip 上传到支持 HTML 游戏的托管服务，或解压到静态网站目录。
+2. 以 ZIP 根目录的 index.html 为入口，保留目录结构和文件名大小写。
+3. 若使用 iframe 嵌入，建议先设为 800×680，并允许脚本、同源存储及全屏；也可使用全屏启动方式。
+4. 不需要启用 SharedArrayBuffer 支持。公开前检查声音、键位和存档恢复。
+5. sango-gba.zip 可作为独立的 ROM 下载包提供。
 
-ZIP 根目录包含 index.html；所有游戏资源都在同一个 ZIP 内。参考官方要求：https://itch.io/docs/creators/html5
+所有游戏资源都包含在网页 ZIP 内，使用相对路径加载。HTTP 服务应能正常提供 JavaScript、JSON 和二进制文件。
 
 ## Actions 与依赖许可
 

@@ -3,7 +3,7 @@
 ## v0.2.0
 
 - 增加可独立托管的网页包，使用 mGBA 核心运行相同 ROM，支持键盘、触屏和浏览器存档。
-- Actions 同时打包 ROM 与 itch.io HTML ZIP，并检查沙盒 iframe 启动、存档和手机布局。
+- Actions 同时打包 ROM 与 HTML 网页包，并检查沙盒 iframe 启动、存档和手机布局。
 
 ## v0.1.0
 

@@ -1,4 +1,4 @@
-"""Build a self-contained itch.io HTML ZIP around the current GBA ROM."""
+"""Build a self-contained HTML web bundle around the current GBA ROM."""
 from pathlib import Path, PurePosixPath
 import argparse
 import hashlib
@@ -126,7 +126,7 @@ def build(rom, output, zip_path):
             'The unmodified core archives include license.txt and core.json, exposed by the runtime.\n'
             'Game source: https://github.com/Oliver714/hotk-gba-demake\n', encoding='utf-8')
         files = sorted(file for file in stage.rglob('*') if file.is_file())
-        assert len(files) < 1000, 'itch.io file count limit exceeded'
+        assert len(files) < 1000, 'Web bundle file count limit exceeded'
         assert (stage / 'index.html').is_file()
         output.mkdir(parents=True, exist_ok=True)
         shutil.copytree(stage, output, dirs_exist_ok=True)

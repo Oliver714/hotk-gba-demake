@@ -15,15 +15,15 @@ Game screens at their native 240×160 resolution.
 
 | Title | Ruler selection |
 |---|---|
-| ![Title](docs/screenshots/title.png) | ![Ruler selection](docs/screenshots/ruler-selection.png) |
+| ![Title](docs/screenshots/en/title.png) | ![Ruler selection](docs/screenshots/en/ruler-selection.png) |
 
 | World map | Zoomed map |
 |---|---|
-| ![World map](docs/screenshots/world-map.png) | ![Zoomed map](docs/screenshots/city-map.png) |
+| ![World map](docs/screenshots/en/world-map.png) | ![Zoomed map](docs/screenshots/en/city-map.png) |
 
 | City management | Battle |
 |---|---|
-| ![City management](docs/screenshots/city.png) | ![Battle](docs/screenshots/battle.png) |
+| ![City management](docs/screenshots/en/city.png) | ![Battle](docs/screenshots/en/battle.png) |
 
 ## Build a ROM
 

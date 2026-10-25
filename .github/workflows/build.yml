@@ -18,6 +18,11 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           persist-credentials: false
+      - name: Validate tagged release notes
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: python3 tools/release_notes.py --tag "$RELEASE_TAG" --output "$RUNNER_TEMP/release-notes.md"
       - name: Install host dependencies
         run: sudo apt-get update && sudo apt-get install -y make g++ python3 xz-utils p7zip-full
       - name: Install locked Wonderful Toolchain
@@ -26,17 +31,26 @@ jobs:
           sudo chown "$(id -u):$(id -g)" /opt/wonderful
           python3 tools/install_toolchain.py
       - name: Run host regression tests
-        run: bash tools/test.sh
+        run: |
+          python3 tests/localization_tests.py
+          python3 tests/release_notes_tests.py
+          bash tools/test.sh
       - name: Build and verify ROM
-        run: bash build.sh
+        run: |
+          bash build.sh
+          GAME_LANGUAGE=en bash build.sh
+      - name: Run English regression tests
+        run: GAME_LANGUAGE=en bash tools/test.sh
       - name: Package release files
-        run: python3 tools/package_release.py
+        run: python3 tools/package_release.py --language all
       - name: Install browser test tools
         run: |
           npm install --prefix "$RUNNER_TEMP/hotk-web-test" playwright@1.64.1 --ignore-scripts --no-audit --no-fund
           node "$RUNNER_TEMP/hotk-web-test/node_modules/playwright/cli.js" install --with-deps chromium
       - name: Test browser player in sandbox iframe
-        run: NODE_PATH="$RUNNER_TEMP/hotk-web-test/node_modules" node tests/web_smoke.cjs
+        run: |
+          NODE_PATH="$RUNNER_TEMP/hotk-web-test/node_modules" node tests/web_smoke.cjs
+          GAME_LANGUAGE=en WEB_TEST_ARTIFACTS=.cache/web-smoke/results/en NODE_PATH="$RUNNER_TEMP/hotk-web-test/node_modules" node tests/web_smoke.cjs dist/web-en
       - name: Upload browser failure screenshots
         if: failure()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
@@ -58,6 +72,13 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Generate bilingual release notes
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: python3 tools/release_notes.py --tag "$RELEASE_TAG" --output "$RUNNER_TEMP/release-notes.md"
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           name: sango-gba-${{ github.sha }}
@@ -68,7 +89,9 @@ jobs:
           GH_REPO: ${{ github.repository }}
           RELEASE_TAG: ${{ github.ref_name }}
         run: |
-          if ! gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
-            gh release create "$RELEASE_TAG" --verify-tag --generate-notes
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            gh release edit "$RELEASE_TAG" --notes-file "$RUNNER_TEMP/release-notes.md"
+          else
+            gh release create "$RELEASE_TAG" --verify-tag --notes-file "$RUNNER_TEMP/release-notes.md"
           fi
           gh release upload "$RELEASE_TAG" release/* --clobber

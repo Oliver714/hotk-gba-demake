@@ -1,5 +1,7 @@
 # 网页版打包与部署
 
+[English](WEB.en.md) | 简体中文
+
 网页版使用 EmulatorJS 的 mGBA WebAssembly 核心运行同一个 GBA ROM，并非另写一套游戏逻辑。ROM 下载版继续发布。
 
 ## 本地打包

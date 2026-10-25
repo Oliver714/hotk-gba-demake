@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname -- "${BASH_SOURCE[0]}")/.."
+case "${GAME_LANGUAGE:-zh}" in
+    zh) ;;
+    en) python3 tools/prepare_locale.py; cd .cache/localization/en ;;
+    *) echo 'GAME_LANGUAGE must be zh or en' >&2; exit 2 ;;
+esac
 test_dir="$(mktemp -d)"
 trap 'rm -rf -- "$test_dir"' EXIT
 if (( $# )); then

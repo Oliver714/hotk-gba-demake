@@ -19,14 +19,15 @@ FROM dependencies AS build
 COPY . .
 ARG RUN_TESTS=0
 ARG BUILD_JOBS=4
-RUN case "$RUN_TESTS" in 0) ;; 1) bash tools/test.sh ;; *) exit 2 ;; esac \
-    && BUILD_JOBS="$BUILD_JOBS" bash build.sh
+ARG GAME_LANGUAGE=zh
+RUN case "$RUN_TESTS" in 0) ;; 1) GAME_LANGUAGE="$GAME_LANGUAGE" bash tools/test.sh ;; *) exit 2 ;; esac \
+    && GAME_LANGUAGE="$GAME_LANGUAGE" BUILD_JOBS="$BUILD_JOBS" bash build.sh
 
 FROM scratch AS artifacts
 COPY --from=build /project/dist/ /
 
 FROM build AS web-build
-RUN python3 tools/package_release.py
+RUN python3 tools/package_release.py --language "$GAME_LANGUAGE"
 
 FROM scratch AS web-artifacts
 COPY --from=web-build /project/release/ /

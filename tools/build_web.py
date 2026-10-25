@@ -20,7 +20,9 @@ def sha256(path):
     return result.hexdigest()
 
 
-def build(rom, output, zip_path):
+def build(rom, output, zip_path, language='zh'):
+    if language not in ('zh', 'en'):
+        raise ValueError('Unsupported language: ' + language)
     lock = json.loads((ROOT / 'web-runtime.lock.json').read_text(encoding='utf-8'))
     cache = ROOT / '.cache/web'
     cache.mkdir(parents=True, exist_ok=True)
@@ -103,8 +105,23 @@ def build(rom, output, zip_path):
         (stage / 'licenses').mkdir(exist_ok=True)
         (stage / 'LICENSE').replace(stage / 'licenses/EmulatorJS-GPL-3.0.txt')
         shutil.copytree(ROOT / 'web', stage, dirs_exist_ok=True)
-        shutil.copy2(rom, stage / 'game.gba')
-        shutil.copy2(ROOT / 'docs/screenshots/title.png', stage / 'poster.png')
+        rom_name = 'game-en.gba' if language == 'en' else 'game.gba'
+        shutil.copy2(rom, stage / rom_name)
+        if language == 'en':
+            shutil.copy2(ROOT / 'web/index.en.html', stage / 'index.html')
+            player = (stage / 'player.js').read_text(encoding='utf-8')
+            for old, new in [("'game.gba'", "'game-en.gba'"),
+                             ("'hotk-gba-demake'", "'hotk-gba-demake-en'"),
+                             ('EJS_gameID = 1001', 'EJS_gameID = 1002'),
+                             ("'zh-CN'", "'en-US'"), ("'开始游戏'", "'Start game'"),
+                             ("window.EJS_backgroundImage = new URL('poster.png', location.href).href;", '')]:
+                if player.count(old) != 1:
+                    raise ValueError('English web patch context changed: ' + old)
+                player = player.replace(old, new)
+            (stage / 'player.js').write_text(player, encoding='utf-8')
+        else:
+            shutil.copy2(ROOT / 'docs/screenshots/title.png', stage / 'poster.png')
+        (stage / 'index.en.html').unlink()
         shutil.copy2(ROOT / 'THIRD_PARTY_NOTICES.md', stage / 'THIRD_PARTY_NOTICES.md')
         shutil.copy2(ROOT / 'LICENSE', stage / 'licenses/PROJECT-GPL-3.0.txt')
         for folder in [ROOT / 'assets/fonts', ROOT / 'vendor/butano/licenses']:
@@ -114,7 +131,8 @@ def build(rom, output, zip_path):
                     target.parent.mkdir(parents=True, exist_ok=True)
                     shutil.copy2(file, target)
         shutil.copy2(ROOT / 'vendor/butano/LICENSE', stage / 'licenses/Butano-LICENSE.txt')
-        manifest = {'rom_sha256': sha256(rom), 'emulatorjs_version': lock['version'],
+        manifest = {'language': language, 'save_identity': 'hotk-gba-demake-en' if language == 'en' else 'hotk-gba-demake',
+                    'rom_sha256': sha256(rom), 'emulatorjs_version': lock['version'],
                     'runtime_sha256': lock['sha256'], 'core': 'mgba', 'threads': False,
                     'patches': ['local-version-check', 'explicit-idb-save-sync']}
         (stage / 'web-build.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
@@ -143,7 +161,8 @@ if __name__ == '__main__':
     parser.add_argument('--rom', type=Path, default=ROOT / 'dist/sango_gba.gba')
     parser.add_argument('--output', type=Path, default=ROOT / 'dist/web')
     parser.add_argument('--zip', type=Path, default=ROOT / 'release/hotk-gba-demake-web.zip')
+    parser.add_argument('--language', choices=('zh', 'en'), default='zh')
     args = parser.parse_args()
     if not args.rom.is_file():
         parser.error('Build the ROM with bash build.sh first.')
-    build(args.rom, args.output, args.zip)
+    build(args.rom, args.output, args.zip, args.language)

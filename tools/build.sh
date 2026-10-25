@@ -6,5 +6,15 @@ python3 tools/bootstrap_deps.py
 if [[ -z "${DEVKITARM:-}" && -z "${WONDERFUL_TOOLCHAIN:-}" ]]; then
     export WONDERFUL_TOOLCHAIN=/opt/wonderful
 fi
-make -j"${BUILD_JOBS:-4}"
-python3 tools/check_rom.py --output sango_gba.gba
+case "${GAME_LANGUAGE:-zh}" in
+    zh)
+        make -j"${BUILD_JOBS:-4}"
+        python3 tools/check_rom.py --output sango_gba.gba
+        ;;
+    en)
+        python3 tools/prepare_locale.py
+        make -C .cache/localization/en GAME_LANGUAGE=en -j"${BUILD_JOBS:-4}"
+        python3 tools/check_rom.py --language en --input .cache/localization/en/sango_gba_en.gba --elf .cache/localization/en/sango_gba_en.elf --output sango_gba_en.gba
+        ;;
+    *) echo 'GAME_LANGUAGE must be zh or en' >&2; exit 2 ;;
+esac

@@ -1,5 +1,7 @@
 # 存档格式
 
+[English](SAVE_FORMAT.en.md) | 简体中文
+
 实现以 src/save.cpp 和 include/model.h 为准。
 
 - 128 KiB FLASH，8 个槽位，每槽 16 KiB。

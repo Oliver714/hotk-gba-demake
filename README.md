@@ -1,5 +1,7 @@
 # 三国群英传 GBA Demake
 
+[English](README.en.md) | 简体中文
+
 [![Build and release](https://github.com/Oliver714/hotk-gba-demake/actions/workflows/build.yml/badge.svg)](https://github.com/Oliver714/hotk-gba-demake/actions/workflows/build.yml)
 [下载 ROM](https://github.com/Oliver714/hotk-gba-demake/releases)
 
@@ -45,6 +47,8 @@ docker buildx build --platform linux/amd64 --target artifacts --output type=loca
 ```
 
 Linux / WSL 可使用 `bash tools/build_docker.sh`；添加 `--test` 同时运行回归测试。完整步骤、平台要求和输出说明见 [编译指南](docs/BUILD.md)。
+
+英文试制版可通过 `GAME_LANGUAGE=en bash build.sh` 构建，Windows 使用 `./build.ps1 -Language en`。英文 ROM、网页包和存档独立于中文版，详见 [英文版说明](docs/ENGLISH.md)。
 
 ## 操作与存档
 

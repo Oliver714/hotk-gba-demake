@@ -1,5 +1,7 @@
 # GitHub Actions 与发布
 
+[English](RELEASING.en.md) | 简体中文
+
 工作流：.github/workflows/build.yml。
 
 1. 普通 main/master 推送、PR 和手动触发：安装固定工具链、运行主机回归测试、构建时自动下载固定 Butano、编译并检查 ROM，上传 Actions 构建附件。
@@ -19,6 +21,15 @@ git push origin v0.1.0
 
 本地可运行 `python3 tools/package_release.py` 检查发布附件。ZIP 带代码协议、第三方说明及素材状态清单；ELF 和缓存不作为公开附件，完整源码由同标签的仓库提供。
 
-发布前更新 CHANGELOG.md，核实素材许可状态，并完成模拟器检查。GitHub 原生源码压缩包包含该标签下的已提交生成资源与构建脚本。
+发布前更新 `CHANGELOG.md` 和 `CHANGELOG.en.md`，核实素材许可状态，并完成模拟器检查。两份更新记录都需要包含与标签完全一致的二级标题，例如 `## v0.2.0`。工作流从对应版本提取内容，按“简体中文 / English”生成 Release 说明；重新运行同一标签时也会覆盖更新说明。任一语言缺少该版本、内容为空或版本重复，标签构建会在安装工具链前失败，不会退回自动生成的说明。
+
+可以先在本地预览说明并运行相关检查：
+
+```bash
+python3 tools/release_notes.py --tag v0.2.0 --output .cache/release-notes.md
+python3 tests/release_notes_tests.py
+```
+
+GitHub 原生源码压缩包包含该标签下的已提交生成资源与构建脚本。
 
 Butano 不再随仓库提交。Actions 调用 build.sh 自动安装依赖；发布 ZIP 中仍保留下载所得的 Butano 许可证。

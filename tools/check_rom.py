@@ -8,15 +8,18 @@ import subprocess
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--output', default='sango_gba.gba', help='Release filename in dist')
+parser.add_argument('--language', choices=('zh', 'en'), default='zh')
+parser.add_argument('--input', default='sango_gba.gba')
+parser.add_argument('--elf', default='sango_gba.elf')
 args = parser.parse_args()
 assert Path(args.output).name == args.output, 'Expected a filename'
 
 root = Path(__file__).resolve().parents[1]
-rom = (root/'sango_gba.gba').read_bytes()
+rom = (root/args.input).read_bytes()
 assert 192 <= len(rom) <= 32*1024*1024, 'ROM exceeds the normal 32 MiB GBA address space'
 assert rom[0xb2] == 0x96, 'Invalid fixed header value'
 assert rom[0xbd] == (-sum(rom[0xa0:0xbd])-0x19)&255, 'Invalid GBA header complement'
-assert rom[0xac:0xb0] == b'SGQ1'
+assert rom[0xac:0xb0] == (b'SGE1' if args.language == 'en' else b'SGQ1')
 assert b'FLASH1M_V' in rom, 'Missing emulator 128 KiB flash detection tag'
 size = 1024*1024
 while size < len(rom):
@@ -37,7 +40,7 @@ try:
     report['source_commit']=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,stderr=subprocess.DEVNULL,text=True).strip()
 except (OSError,subprocess.CalledProcessError):
     report['source_commit']=None
-elf_file = root/'sango_gba.elf' 
+elf_file = root/args.elf
 if elf_file.exists():
     elf = elf_file.read_bytes()
     assert elf[:6] == b'\x7fELF\x01\x01', 'Expected little-endian ELF32'
@@ -56,5 +59,6 @@ if elf_file.exists():
     report.update(ewram_allocated_bytes=totals['ewram'], iwram_allocated_bytes=totals['iwram'],
                   ewram_limit_bytes=256*1024, iwram_limit_bytes=32*1024, flash_bytes=128*1024)
 file.write_bytes(release) # Publish only after every memory/header gate passes.
-(dist/'build_report.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
+report['language'] = args.language
+(dist/('build_report_en.json' if args.language == 'en' else 'build_report.json')).write_text(json.dumps(report,indent=2),encoding='utf-8')
 print(json.dumps(report,indent=2))

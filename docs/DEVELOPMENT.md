@@ -1,5 +1,7 @@
 # 开发结构
 
+[English](DEVELOPMENT.en.md) | 简体中文
+
 - src/main.cpp：页面状态、输入、调度。
 - src/model.cpp、battle_tick.bn_iwram.cpp：内政、行军、战斗模型。
 - src/render.bn_iwram.cpp、render_ui.cpp：战场、地图与界面绘制。

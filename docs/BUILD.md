@@ -1,5 +1,7 @@
 # Linux、WSL 与 Docker 编译
 
+[English](BUILD.en.md) | 简体中文
+
 所有命令在仓库根目录运行。正常编译直接使用 generated/，不需要原版游戏文件、素材原稿、字体转换工具或 ffmpeg。
 
 ## Linux 原生编译
